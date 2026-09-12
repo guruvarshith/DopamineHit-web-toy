@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DopamineHit — Oddly Satisfying Web Toys</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="logo">Dopamine<span class="accent">Hit</span></h1>
+    <p class="tagline">Oddly satisfying things — no purpose whatsoever</p>
+  </header>
+
+  <nav class="tab-bar" id="tabBar">
+    <button class="tab-btn active" data-tab="bubbleWrap">bubble wrap</button>
+    <button class="tab-btn" data-tab="doors">doors</button>
+    <button class="tab-btn" data-tab="switchToy">switch</button>
+    <button class="tab-btn" data-tab="clean">clean</button>
+  </nav>
+
+  <main>
+
+    <!-- TOY 1: BUBBLE WRAP -->
+    <section class="toy-view active" id="bubbleWrap">
+      <h2 class="toy-title">bubble wrap</h2>
+      <p class="toy-subtitle">pop them all.</p>
+
+      <div class="stats-row">
+        <div class="stat">
+          <span id="poppedCount">0</span>
+          <label>popped</label>
+        </div>
+        <div class="stat">
+          <span id="remainingCount">84</span>
+          <label>remaining</label>
+        </div>
+      </div>
+
+      <div class="bubble-grid" id="bubbleGrid"></div>
+
+      <button class="reset-btn" id="resetBubbles">new sheet</button>
+    </section>
+
+    <!-- TOY 2: DOORS -->
+    <section class="toy-view" id="doors">
+      <h2 class="toy-title">doors</h2>
+      <p class="toy-subtitle">open a door. find another door.</p>
+
+      <div class="doors-container" id="doorsGrid"></div>
+
+      <button class="reset-btn" id="resetDoors">reset doors</button>
+    </section>
+
+    <!-- TOY 3: SWITCH -->
+    <section class="toy-view" id="switchToy">
+      <h2 class="toy-title">switch</h2>
+      <p class="toy-subtitle">*turn on your sound for the full experience.</p>
+
+      <div class="wall" id="wall">
+        <div class="switch-plate">
+          <span class="screw screw-top"></span>
+          <div class="switch-slot">
+            <button class="toggle" id="toggleSwitch" aria-label="toggle the light"></button>
+          </div>
+          <span class="screw screw-bottom"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOY 4: CLEAN -->
+    <section class="toy-view" id="clean">
+      <h2 class="toy-title">clean</h2>
+      <p class="toy-subtitle">make it spotless.</p>
+
+      <div class="stats-row">
+        <div class="stat">
+          <span id="cleanPercent">0%</span>
+          <label>cleaned</label>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="cleanCanvas"></canvas>
+      </div>
+
+      <button class="reset-btn" id="resetClean">reset surface</button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">DopamineHit — solving absolutely nothing since today</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

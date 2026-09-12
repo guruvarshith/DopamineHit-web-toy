@@ -1,0 +1,372 @@
+/* ---------- Reset & base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f1ea;
+  color: #2b2b28;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  text-align: center;
+  padding: 48px 20px 16px;
+}
+
+.logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.logo .accent {
+  font-style: italic;
+  font-weight: 400;
+  color: #b5652d;
+}
+
+.tagline {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: #8a8478;
+  letter-spacing: 1px;
+}
+
+/* ---------- Tab bar ---------- */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  max-width: 640px;
+  margin: 32px auto;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid #e4dfd2;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: #6f6a5e;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tab-btn:hover {
+  color: #2b2b28;
+}
+
+.tab-btn.active {
+  background: #2b2b28;
+  color: #f4f1ea;
+}
+
+/* ---------- Toy views ---------- */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.toy-view {
+  display: none;
+  text-align: center;
+  animation: fadeIn 0.35s ease;
+}
+
+.toy-view.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toy-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  margin: 0 0 4px;
+}
+
+.toy-subtitle {
+  color: #8a8478;
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat span {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.stat label {
+  font-size: 0.7rem;
+  color: #a19c8e;
+  letter-spacing: 1px;
+}
+
+.reset-btn {
+  margin-top: 28px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid #d8d2c1;
+  background: #ffffff;
+  color: #2b2b28;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.reset-btn:hover {
+  background: #eeeadd;
+}
+
+.reset-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- TOY 1: Bubble wrap ---------- */
+.bubble-grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 8px;
+  max-width: 820px;
+  margin: 0 auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.bubble {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #fdfcf8 0%, #e7e2d3 55%, #cec8b6 100%);
+  box-shadow:
+    inset 0 -3px 5px rgba(0, 0, 0, 0.07),
+    0 2px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.bubble:not(.popped):hover {
+  transform: scale(1.06);
+}
+
+.bubble.popped {
+  background: radial-gradient(circle at 40% 40%, #ddd7c6 0%, #c4bda9 100%);
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.25),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.4);
+  transform: scale(0.9);
+}
+
+@media (max-width: 700px) {
+  .bubble-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+}
+
+/* ---------- TOY 2: Doors ---------- */
+.doors-container {
+  background: #1c1712;
+  border-radius: 20px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 620px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+@media (max-width: 700px) {
+  .doors-container {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 24px;
+    gap: 14px;
+  }
+}
+
+.door-frame {
+  position: relative;
+  aspect-ratio: 3 / 5;
+  transform-style: preserve-3d;
+}
+
+.door-inner {
+  position: absolute;
+  inset: 0;
+  background: #0d0a08;
+  border-radius: 6px 6px 2px 2px;
+}
+
+.door {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ac774a 0%, #8a5a34 100%);
+  border: 2px solid #6b4423;
+  border-radius: 6px 6px 2px 2px;
+  transform-origin: left center;
+  transition: transform 0.7s cubic-bezier(0.45, 0.05, 0.35, 1);
+  backface-visibility: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.door::before {
+  content: "";
+  position: absolute;
+  inset: 12% 14%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.door .handle {
+  position: absolute;
+  right: 10%;
+  top: 48%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f2cd8f;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+.door.open {
+  transform: rotateY(-105deg);
+}
+
+/* ---------- TOY 3: Switch ---------- */
+.wall {
+  max-width: 640px;
+  min-height: 380px;
+  margin: 10px auto 0;
+  background: #f2efe6;
+  background-image:
+    linear-gradient(120deg, transparent 48%, rgba(0,0,0,0.06) 49%, transparent 50%);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.6s ease;
+  overflow: hidden;
+}
+
+.wall.dark {
+  background: #0c0c0a;
+  background-image: none;
+}
+
+.switch-plate {
+  width: 150px;
+  height: 230px;
+  background: linear-gradient(160deg, #efe9d9 0%, #d9d2bb 100%);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  transition: box-shadow 0.6s ease;
+}
+
+.wall.dark .switch-plate {
+  box-shadow: 0 0 30px 4px rgba(230, 210, 90, 0.15);
+}
+
+.screw {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a49e88;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.switch-slot {
+  width: 64px;
+  height: 108px;
+  background: #cac3ac;
+  border-radius: 5px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.toggle {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(160deg, #fdfcf4 0%, #d9d2bb 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 0.22s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.toggle.down {
+  transform: translateY(52px);
+}
+
+.wall.dark .toggle {
+  background: linear-gradient(160deg, #c7c07a 0%, #6b6540 100%);
+  box-shadow: 0 0 16px 5px rgba(220, 210, 100, 0.55);
+}
+
+/* ---------- TOY 4: Clean ---------- */
+.canvas-wrap {
+  max-width: 860px;
+  height: 360px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+#cleanCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+  background: #f4f1ea;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  margin-top: 56px;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: #a19c8e;
+}
